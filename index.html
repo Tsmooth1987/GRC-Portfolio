@@ -4,31 +4,423 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terence Webster | GRC & Cloud Security Professional</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #1a202c;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-brand {
+    color: #667eea;
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu li a {
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    color: #667eea;
+}
+
+.hero {
+    padding: 12rem 0 6rem;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero-title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-subtitle {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #fbbf24;
+    font-weight: 600;
+}
+
+.hero-description {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    font-size: 1.3rem;
+    opacity: 0.95;
+    line-height: 1.8;
+}
+
+.certifications {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.cert-badge {
+    background: rgba(255,255,255,0.2);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    font-weight: 600;
+}
+
+.main-content {
+    background: white;
+    border-radius: 30px 30px 0 0;
+    margin-top: -50px;
+    position: relative;
+    z-index: 10;
+    padding: 4rem 0;
+}
+
+.section {
+    padding: 4rem 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: #1a202c;
+    font-weight: 800;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2rem;
+}
+
+.project-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+.project-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+}
+
+.project-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.project-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #1a202c;
+    font-weight: 700;
+}
+
+.project-description {
+    margin-bottom: 2rem;
+    color: #4a5568;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.project-metrics {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.metric {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.project-link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.project-link:hover {
+    color: #764ba2;
+    transform: translateX(5px);
+}
+
+.contact-section {
+    background: linear-gradient(135deg, #1a202c, #2d3748);
+    color: white;
+    text-align: center;
+    padding: 4rem 0;
+    margin-top: 4rem;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.contact-link:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-5px);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+    
+    .project-card {
+        padding: 2rem;
+    }
+}
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="nav-brand">Terence Webster</div>
+            <div class="nav-brand">TW</div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
         </div>
     </nav>
 
-    <!-- Rest of your HTML content goes here -->
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1 class="hero-title">Terence Webster</h1>
+            <h2 class="hero-subtitle">GRC & Cloud Security Engineer</h2>
+            <p class="hero-description">
+                Transforming security challenges into automated solutions with 8 years of experience in AWS security, 
+                Python development, and compliance automation. ISO 27001 Lead Auditor certified with a proven track 
+                record of reducing security operations time by 95% through innovative automation.
+            </p>
+            
+            <div class="certifications">
+                <div class="cert-badge">🏆 ISO 27001 Lead Auditor</div>
+                <div class="cert-badge">☁️ AWS Security Specialist</div>
+                <div class="cert-badge">🐍 Python Expert</div>
+                <div class="cert-badge">🔧 Infrastructure as Code</div>
+            </div>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">🚀 Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon">🛡️</div>
+                        <h3 class="project-title">Multi-Account Security Hub Aggregator</h3>
+                        <div class="project-metrics">
+                            <span class="metric">446 Findings</span>
+                            <span class="metric">95% Time Reduction</span>
+                            <span class="metric">50+ Accounts</span>
+                        </div>
+                        <p class="project-description">
+                            Consolidated security findings across 50+ AWS accounts into a single dashboard, 
+                            reducing analysis time from 40 hours to 2 hours. Automated reporting and alerting 
+                            for critical security issues with real-time compliance monitoring.
+                        </p>
+                        <a href="https://github.com/Tsmooth1987" target="_blank" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-icon">🔧</div>
+                        <h3 class="project-title">S3 Auto-Remediator</h3>
+                        <div class="project-metrics">
+                            <span class="metric">100% Compliance</span>
+                            <span class="metric">24hr Resolution</span>
+                            <span class="metric">Zero Manual Work</span>
+                        </div>
+                        <p class="project-description">
+                            Automated S3 compliance remediation system that detects and fixes security 
+                            misconfigurations in real-time. Features automated versioning enablement, 
+                            public access blocking, and comprehensive CSV reporting with detailed audit logs.
+                        </p>
+                        <a href="https://github.com/Tsmooth1987" target="_blank" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-icon">📊</div>
+                        <h3 class="project-title">Security Hub Excel Pipeline</h3>
+                        <div class="project-metrics">
+                            <span class="metric">95% Time Reduction</span>
+                            <span class="metric">Executive Reports</span>
+                            <span class="metric">Automated Analytics</span>
+                        </div>
+                        <p class="project-description">
+                            Excel-based security reporting pipeline that automatically generates executive 
+                            dashboards and compliance reports. Features automated data aggregation, 
+                            trend analysis, and stakeholder-ready presentations with real-time updates.
+                        </p>
+                        <a href="https://github.com/Tsmooth1987" target="_blank" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-icon">🔐</div>
+                        <h3 class="project-title">Least Privilege IAM Checker</h3>
+                        <div class="project-metrics">
+                            <span class="metric">5 Violation Types</span>
+                            <span class="metric">Automated Analysis</span>
+                            <span class="metric">Risk Scoring</span>
+                        </div>
+                        <p class="project-description">
+                            Automated IAM policy analysis tool that identifies privilege violations and 
+                            provides remediation recommendations. Covers 5 types of common privilege 
+                            escalation risks with detailed risk scoring and compliance reporting.
+                        </p>
+                        <a href="https://github.com/Tsmooth1987" target="_blank" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">🤝 Let's Connect</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                I'm always interested in discussing security automation, cloud architecture, 
+                and collaboration opportunities. Let's connect and explore how we can work together 
+                to solve complex security challenges.
+            </p>
+            
+            <div class="contact-links">
+                <a href="https://github.com/Tsmooth1987" target="_blank" class="contact-link">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://linkedin.com/in/terencewebster" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="mailto:terence.webster@example.com" class="contact-link">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
